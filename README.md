@@ -34,5 +34,5 @@ command (on windows powershell) to run: [outputFileName]\
 *Note: you can skip the custom output file, the new compilation command becomes: g++ Dictionary.h Dictionary.cpp user.cpp\
 To run, change [outputFileName] to 'a.out' in the run commands given\
 \
-Please feel free to add new functionalities to the Dictionary class!\
+Please feel free to add new functionalities to the Dictionary class!
 
