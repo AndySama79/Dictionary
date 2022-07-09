@@ -17,6 +17,7 @@ typedef vector<string> vect;
 Dictionary::Dictionary(string fileName) {
     this->dictionary = makeDictionary(fileName);
     this->closed_form_words = closed_form();
+    this->palindrome_words = palindrome();
 }
 
 umap Dictionary::getDictionary() {
@@ -78,4 +79,37 @@ vect Dictionary::closed_form() {
 
 vect Dictionary::getClosedFormWords() {
     return this->closed_form_words;
+}
+
+vect Dictionary::palindrome() 
+{
+    vect wordList;
+    
+    for (auto pair : dictionary)
+    {
+        string word = pair->first;
+        if (is_palindrome(word))
+        {
+            wordList.psuh_back(word);
+        }
+    }
+    return wordList;
+}
+
+bool Dictionary::is_palindrome(string word) 
+{
+    transform(word.begin(), word.end(), word.begin(), :: toupper());    // converts the entire word to upper case
+    int len = word.length();
+    for (int i = 0; i < len / 2; i++)
+    {
+        int j = len - 1 - i;
+        if (word[i] != word[j])
+            return false;   // first non-matching pair of letters
+    }
+    return true;            // returns if no non-matching pair found
+}
+
+vect Dictionary::getPlaindromeWords() 
+{
+    return this->palindrome_words;
 }
